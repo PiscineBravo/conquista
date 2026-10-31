@@ -2,8 +2,17 @@
 <html lang="it">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,viewport-fit=cover">
 <title>Conquista</title>
+<meta name="theme-color" content="#03060c">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Conquista">
+<meta name="format-detection" content="telephone=no">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="icons/favicon-64.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <style>
 :root{--bg:#070b14;--panel:rgba(14,20,34,.82);--line:rgba(255,255,255,.12);--txt:#e8eefc;--dim:#8a97b4;--acc:#5cc8ff}
 *{box-sizing:border-box}
@@ -171,6 +180,44 @@ button.wide{width:100%;margin-top:14px;padding:12px}
 .ls .pi{flex:1}.tag{font-size:11px;padding:3px 8px;border-radius:20px;background:rgba(255,255,255,.08);color:var(--dim)}
 .ls .x{padding:4px 8px;font-size:11px}
 .wait{flex:1;text-align:center;padding:10px;animation:glow3 1.6s ease-in-out infinite}@keyframes glow3{50%{opacity:.5}}
+html,body{position:fixed;inset:0;overscroll-behavior:none;touch-action:manipulation;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
+input{-webkit-user-select:text;user-select:text;-webkit-touch-callout:none}
+canvas{touch-action:none}img{-webkit-user-drag:none}
+button{touch-action:manipulation}
+#side{top:calc(14px + env(safe-area-inset-top));left:calc(14px + env(safe-area-inset-left));bottom:calc(14px + env(safe-area-inset-bottom))}
+#bar{right:calc(14px + env(safe-area-inset-right));bottom:calc(14px + env(safe-area-inset-bottom))}
+.touch-only{display:none}@media (pointer:coarse){.touch-only{display:inline-block}}
+#allb.on{background:linear-gradient(#ffd23f,#e0a800);color:#111}
+.install{width:100%;margin-top:12px;padding:12px;background:linear-gradient(90deg,#3ddc97,#1e9e6a);font-size:15px}
+#rot{position:fixed;inset:0;z-index:30;display:none;place-items:center;align-content:center;gap:8px;background:#03060c;text-align:center;font-size:18px}
+#rot .ri{font-size:64px;animation:rot 2s ease-in-out infinite}@keyframes rot{40%,60%{transform:rotate(-90deg)}}
+@media (pointer:coarse) and (orientation:portrait){#rot{display:grid}}
+#setup{padding:calc(20px + env(safe-area-inset-top)) 0 calc(20px + env(safe-area-inset-bottom))}
+/* telefono */
+body.compact #side{top:calc(6px + env(safe-area-inset-top));left:calc(6px + env(safe-area-inset-left));bottom:calc(6px + env(safe-area-inset-bottom));width:170px;gap:6px}
+body.compact #players{padding:4px}body.compact .pc{padding:4px 5px;gap:6px}body.compact .pc.cur::before{top:4px;bottom:4px}
+body.compact .av{width:26px;height:26px;font-size:13px}body.compact .bot{font-size:9px}
+body.compact .pn{font-size:11px}body.compact .ps{font-size:9.5px;gap:5px}body.compact .bar{height:3px;margin:2px 0}
+body.compact .conts,body.compact #log{display:none}
+body.compact #hand{padding:6px;max-height:48%;overflow:auto}body.compact .hh b{font-size:11px}body.compact .hh button{padding:3px 6px;font-size:10px}
+body.compact .cd{width:38px;height:54px}body.compact .ic{font-size:15px}body.compact .cn,body.compact .cs{font-size:7px}
+body.compact #bar{left:calc(182px + env(safe-area-inset-left));right:calc(6px + env(safe-area-inset-right));bottom:calc(6px + env(safe-area-inset-bottom));max-width:none;padding:6px 8px;gap:6px;flex-wrap:nowrap;justify-content:space-between}
+body.compact.portrait #bar{left:6px}
+body.compact .steps{gap:2px}body.compact .step:not(.on){display:none}body.compact .step{padding:2px 7px;font-size:9px}
+body.compact #msg{min-width:0;flex:1;font-size:10.5px;line-height:1.25}body.compact #msg b{font-size:12px}
+body.compact #bar button{padding:7px 9px;font-size:12px}body.compact .abtn small{font-size:8px}
+body.compact #evb{top:calc(6px + env(safe-area-inset-top));left:auto;right:calc(6px + env(safe-area-inset-right));transform:none;padding:4px 8px;max-width:220px}
+body.compact #evb small{display:none}body.compact #evb .ei{font-size:18px}
+body.compact #battle{left:calc(50% + 88px);bottom:calc(58px + env(safe-area-inset-bottom));transform-origin:bottom center;transform:translate(-50%,30px) scale(.66);padding:10px}
+body.compact #battle.show{transform:translate(-50%,0) scale(.66)}
+body.compact #banner{font-size:30px}body.compact .evi{font-size:46px}body.compact .evcard{padding:18px}
+body.compact #tip{font-size:11px;padding:4px 8px}
+body.compact .menu{padding:14px 16px;border-radius:16px}body.compact .logo{margin-bottom:8px}body.compact .globe{font-size:26px}body.compact .logo h1{font-size:26px;letter-spacing:5px}
+body.compact .logo .sub{font-size:11px}body.compact .tabs{margin-bottom:8px}body.compact .tab{padding:7px;font-size:12px}
+body.compact .fgrid{grid-template-columns:repeat(6,1fr);gap:4px}body.compact .ft{padding:6px 2px}body.compact .ft span{font-size:20px}body.compact .ft b{font-size:9px}body.compact .ft small{display:none}
+body.compact .row{padding:3px 5px;margin:4px 0}body.compact .row input,body.compact .row select{padding:5px;font-size:12px}
+body.compact .fl input{padding:7px;font-size:14px}body.compact .codein{font-size:18px!important}body.compact .code b{font-size:24px}
+body.compact .mrow button,body.compact button.wide{padding:9px}
 </style>
 </head>
 <body>
@@ -181,11 +228,13 @@ button.wide{width:100%;margin-top:14px;padding:12px}
   <div class="steps"><span class="step" data-p="reinforce">Rinforzi</span><span class="step" data-p="attack">Attacco</span><span class="step" data-p="fortify">Spostamento</span></div>
   <div id="msg"></div>
   <button id="ability" class="abtn"></button>
+  <button id="allb" class="touch-only" title="Applica a tutte le armate">½</button>
   <button id="mute" title="Audio">🔊</button>
   <button id="auto">Auto</button>
   <button id="next">Avanti ▶</button>
 </div>
 <div id="banner"></div>
+<div id="rot"><div class="ri">📱</div><b>Ruota il telefono</b><div class="s">Conquista si gioca in orizzontale</div></div>
 <div id="evb" class="panel" style="display:none"></div>
 <div id="evo" style="display:none"><div class="evcard"><div id="evc-r" class="evr"></div><div id="evc-i" class="evi"></div><div id="evc-n" class="evn"></div><div id="evc-d" class="evd"></div><div class="s">clic per continuare</div></div></div>
 <div id="editor" class="panel" style="display:none"></div>
@@ -215,11 +264,13 @@ button.wide{width:100%;margin-top:14px;padding:12px}
    <button id="j-go" class="primary wide">🔗 Entra nella stanza</button>
   </section>
   <section id="t-lobby" class="tp">
-   <div class="code"><span>Codice stanza</span><b id="l-code"></b><button id="l-copy">📋 Copia invito</button></div>
+   <div class="code"><span>Codice stanza</span><b id="l-code"></b><button id="l-copy">📤 Invita</button></div>
    <div id="l-list"></div>
    <div id="l-ctl" class="mrow"></div>
   </section>
   <div id="m-err" class="err"></div>
+  <button id="install" class="install" style="display:none">📲 Installa l'app</button>
+  <div id="ios-hint" class="hint" style="display:none;text-align:center;margin-top:10px">Per installarla: tocca <b>Condividi</b> e poi <b>«Aggiungi alla schermata Home»</b></div>
  </div>
 </div>
 <div id="win" style="display:none"><div class="card" style="text-align:center"><h1 id="wt"></h1><div class="sub" id="wo"></div><button onclick="location.reload()">Nuova partita</button></div></div>
@@ -230,6 +281,7 @@ button.wide{width:100%;margin-top:14px;padding:12px}
 const COLORS=['#ff4d6d','#4dabff','#ffd23f','#3ddc97','#c77dff','#ff8c42'];
 const NAMES=['Rosso','Blu','Oro','Smeraldo','Viola','Arancio'];
 const $=id=>document.getElementById(id);
+function hideSetup(){$('setup').style.display='none';document.body.classList.add('ingame')}
 const cv=$('c'),ctx=cv.getContext('2d');
 let R=Math.random;
 function mulberry(a){return()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
@@ -463,9 +515,10 @@ function hudInner(){
   document.querySelectorAll('.ct').forEach(e=>{e.onmouseenter=()=>hoverCont=+e.dataset.c;e.onmouseleave=()=>hoverCont=-1});
   const pc=P[cur].color;
   document.querySelectorAll('.step').forEach(s=>{s.classList.toggle('on',s.dataset.p===phase);s.style.setProperty('--pc',pc)});
-  const m={reinforce:`Rinforzi da piazzare: <b>${reserve}</b><br>Clic = +1 · Shift = tutti · clic destro = annulla`,
+  const touch=matchMedia('(pointer:coarse)').matches;
+  const m={reinforce:`Rinforzi da piazzare: <b>${reserve}</b><br>${touch?'Tocca = +1 · ½/Tutti · tieni premuto = annulla':'Clic = +1 · Shift = tutti · clic destro = annulla'}`,
     attack:sel<0?'Scegli un tuo territorio (≥2 armate)':`Attacca un nemico confinante con <b>${T[sel].name}</b>`,
-    fortify:fortPair?'Sposta altre armate sulla stessa rotta, poi Fine turno':'Uno spostamento tra due tuoi territori confinanti (Shift = tutte)'}[phase]||'';
+    fortify:fortPair?'Sposta altre armate sulla stessa rotta, poi Fine turno':`Uno spostamento tra due tuoi territori confinanti (${touch?'Tutti':'Shift'} = tutte)`}[phase]||'';
   const F=FACTIONS[fac(cur)],ab=$('ability');
   ab.innerHTML=`${F.icon} ${F.a}<small>${P[cur].cd?`tra ${P[cur].cd} turni`:targeting?'scegli il bersaglio':'pronta'}</small>`;
   ab.title=`${F.n}\nPassiva: ${F.p}\nAbilità (${F.a}): ${F.ad}`;
@@ -935,7 +988,7 @@ async function guestData(d){
   else if(d.k==='full'){menuErr('La stanza è piena o la partita è già iniziata.');showTab('join');busyBtn('j-go',false,'🔗 Entra nella stanza')}
   else if(d.k==='start'){custom={names:{},cont:{},add:[],rem:[],bonus:{},...d.custom};NET.me=d.me;
     try{await ensureMap(true)}catch(e){alert('Impossibile scaricare la mappa.');return}
-    netReady=true;$('setup').style.display='none';started=true;if(pendSnap)applySnap(pendSnap)}
+    netReady=true;hideSetup();started=true;if(pendSnap)applySnap(pendSnap)}
   else if(d.k==='snap'){if(netReady)applySnap(d.s);else pendSnap=d.s}
   else if(d.k==='fx'){if(netReady&&FXO[d.n])FXO[d.n](d.a)}
 }
@@ -1004,7 +1057,7 @@ async function ensureMap(remote){if(!mapReady){await genMap();setDefaultConts();
 async function openEditor(){
   $('ed-open').disabled=true;$('ed-open').textContent='Caricamento mappa…';
   try{await ensureMap()}catch(e){alert('Impossibile scaricare la mappa: serve una connessione a internet.');$('ed-open').disabled=false;$('ed-open').textContent='✏️ Editor mappa';return}
-  mode='edit';sel=-1;$('setup').style.display='none';['players','log','bar'].forEach(id=>$(id).style.display='none');$('editor').style.display='block';edHud();
+  mode='edit';sel=-1;hideSetup();['players','log','bar'].forEach(id=>$(id).style.display='none');$('editor').style.display='block';edHud();
 }
 function edClick(t){
   if(t<0){sel=-1}else if(sel<0||sel===t){sel=sel===t?-1:t}else{toggleLink(sel,t)}
@@ -1043,15 +1096,22 @@ function edHud(){
 // ---------- Rendering ----------
 let sc=1,ox=0,oy=0,W=0,H=0,DPR=1;
 function resize(){DPR=devicePixelRatio||1;W=innerWidth;H=innerHeight;cv.width=W*DPR;cv.height=H*DPR;cv.style.width=W+'px';cv.style.height=H+'px';
-  const L=W>1100?270:14,TOP=64,BOT=96;
+  const compact=W<900||H<560;document.body.classList.toggle('compact',compact);document.body.classList.toggle('portrait',H>W);
+  const L=compact?(W>H?182:8):W>1100?270:14,TOP=compact?8:64,BOT=compact?62:96;
   sc=Math.min((W-L-14)/MW,(H-TOP-BOT-30)/(MH*TILT+DEPTH));ox=L+(W-L-14-MW*sc)/2;oy=TOP+(H-TOP-BOT-MH*TILT*sc-DEPTH*sc)/2;
   document.documentElement.style.setProperty('--mapc',(L+(W-L)/2)+'px')}
 addEventListener('resize',resize);
 function pick(sx,sy){const x=(sx-EX)/K,y=(sy-EY)/(K*TILT);ctx.setTransform(1,0,0,1,0,0);for(const t of T)if(hitT(t,x,y))return t.id;return -1}
 cv.addEventListener('mousemove',e=>{mouse={x:e.clientX,y:e.clientY};hover=pick(e.clientX,e.clientY);const tp=$('tip');
-  if(hover>=0&&(P.length||mode==='edit')){const t=T[hover];tp.innerHTML=mode==='edit'?`<b>${t.name}</b> · ${CONT[t.cont].n} · ${t.adj.size} collegamenti`:`<b>${t.name}</b> · ${P[t.owner].name} · ${hidden(t)?'? (nebbia)':t.armies+' armate'}${phase==='attack'&&sel>=0&&canAct()&&canAttack(sel,t.id)&&!hidden(t)?(()=>{const p=odds(sel,t.id);return`<br>Probabilità di conquista: <b style="color:${oddsCol(p)}">${p}%</b>`})():''}${t.owner===cur&&placed[t.id]?`<br>+${placed[t.id]} piazzate (clic destro per togliere)`:''}`;tp.style.left=e.clientX+14+'px';tp.style.top=e.clientY+14+'px';tp.style.opacity=1}else tp.style.opacity=0;
+  if(hover>=0&&(P.length||mode==='edit')){const t=T[hover];tp.innerHTML=mode==='edit'?`<b>${t.name}</b> · ${CONT[t.cont].n} · ${t.adj.size} collegamenti`:`<b>${t.name}</b> · ${P[t.owner].name} · ${hidden(t)?'? (nebbia)':t.armies+' armate'}${phase==='attack'&&sel>=0&&canAct()&&canAttack(sel,t.id)&&!hidden(t)?(()=>{const p=odds(sel,t.id);return`<br>Probabilità di conquista: <b style="color:${oddsCol(p)}">${p}%</b>`})():''}${t.owner===cur&&placed[t.id]?`<br>+${placed[t.id]} piazzate (clic destro per togliere)`:''}`;tp.style.left=e.clientX+14+'px';tp.style.top=e.clientY+14+'px';tp.style.opacity=1;clearTimeout(tp._h);if(matchMedia('(pointer:coarse)').matches)tp._h=setTimeout(()=>tp.style.opacity=0,1800)}else tp.style.opacity=0;
   cv.style.cursor=hover>=0?'pointer':'default'});
-cv.addEventListener('click',e=>{const t=pick(e.clientX,e.clientY);mode==='edit'?edClick(t):act({type:'click',t,shift:e.shiftKey})});
+let lpT=null,lpFired=false,lpXY=null,allMode=false;
+cv.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse')return;lpFired=false;lpXY=[e.clientX,e.clientY];clearTimeout(lpT);
+  lpT=setTimeout(()=>{lpFired=true;navigator.vibrate?.(25);if(mode==='edit'){sel=-1;edHud()}else if(P.length)act({type:'rclick',t:pick(...lpXY),shift:allMode})},550)});
+cv.addEventListener('pointermove',e=>{if(lpXY&&Math.hypot(e.clientX-lpXY[0],e.clientY-lpXY[1])>12)clearTimeout(lpT)});
+cv.addEventListener('pointerup',()=>clearTimeout(lpT));cv.addEventListener('pointercancel',()=>clearTimeout(lpT));
+cv.addEventListener('click',e=>{if(lpFired){lpFired=false;return}const t=pick(e.clientX,e.clientY);mode==='edit'?edClick(t):act({type:'click',t,shift:e.shiftKey||allMode})});
+$('allb').onclick=()=>{allMode=!allMode;$('allb').classList.toggle('on',allMode);$('allb').textContent=allMode?'Tutti':'½'};
 cv.addEventListener('contextmenu',e=>{e.preventDefault();
   if(mode==='edit'){sel=-1;edHud();return}
   if(P.length)act({type:'rclick',t:pick(e.clientX,e.clientY),shift:e.shiftKey})});
@@ -1183,7 +1243,7 @@ function beginGame(){
   const start={2:45,3:36,4:30,5:26,6:23}[P.length];
   P.forEach((_,p)=>{const o=owned(p);for(let n=start-o.length;n>0;n--)o[Math.random()*o.length|0].armies++});
   T.forEach(t=>t.disp=t.armies);
-  $('setup').style.display='none';cur=0;startTurn();
+  hideSetup();cur=0;startTurn();
 }
 $('go').onclick=async()=>{
   P=[];DEF.forEach((_,i)=>{const k=$('k'+i).value;if(k!=='none')P.push({name:$('n'+i).value||NAMES[i],color:COLORS[i],ai:k==='ai',alive:true,cards:[],fac:$('f'+i).value,cd:1,flags:{}})});
@@ -1202,9 +1262,11 @@ $('h-go').onclick=hostRoom;$('j-go').onclick=joinRoom;
 $('j-code').oninput=e=>e.target.value=e.target.value.toUpperCase().replace(/[^A-Z0-9]/g,'');
 $('l-copy').onclick=async()=>{const web=/^https?:/.test(location.protocol)?location.origin+location.pathname+'#'+NET.code:'';
   const txt=web?`Giochiamo a Conquista! Entra nella mia stanza: ${web} (codice ${NET.code})`:`Giochiamo a Conquista! Apri il gioco, scegli "Entra" e usa il codice ${NET.code}`;
-  try{await navigator.clipboard.writeText(txt);$('l-copy').textContent='✅ Copiato'}catch(e){prompt('Copia questo invito:',txt)}setTimeout(()=>$('l-copy').textContent='📋 Copia invito',1500)};
+  if(navigator.share){try{await navigator.share({title:'Conquista',text:txt,url:web||undefined});return}catch(e){if(e.name==='AbortError')return}}
+  try{await navigator.clipboard.writeText(txt);$('l-copy').textContent='✅ Invito copiato'}catch(e){$('m-err').textContent=txt}setTimeout(()=>$('l-copy').textContent='📤 Invita',1500)};
 if(/^#[A-Z0-9]{5}$/i.test(location.hash)){$('j-code').value=location.hash.slice(1).toUpperCase();showTab('join')}
 $('ed-open').onclick=openEditor;
+if(matchMedia('(pointer:coarse)').matches)$('ed-open').style.display='none';
 $('ability').onclick=()=>act({type:'ability'});
 addEventListener('keydown',e=>{
   if(e.target.tagName==='INPUT'||mode==='edit'||!P.length||$('setup').style.display!=='none')return;
@@ -1213,6 +1275,32 @@ addEventListener('keydown',e=>{
   if(e.key==='Enter'&&!$('next').disabled)$('next').click();
   if(e.key==='a'&&!$('auto').disabled)$('auto').click();if(e.key==='q'&&!$('ability').disabled)$('ability').click()});
 addEventListener('keyup',e=>{if(e.code==='Space'&&battle){e.preventDefault();release()}});
+// ---------- App per cellulare: niente zoom, selezione, copia/incolla o menu contestuali ----------
+['copy','cut','paste','dragstart','drop'].forEach(t=>document.addEventListener(t,e=>e.preventDefault()));
+document.addEventListener('selectstart',e=>{if(!e.target.closest?.('input'))e.preventDefault()});
+document.addEventListener('contextmenu',e=>e.preventDefault());
+['gesturestart','gesturechange','gestureend'].forEach(t=>document.addEventListener(t,e=>e.preventDefault()));
+document.addEventListener('touchmove',e=>{if(e.touches.length>1||!e.target.closest('#setup,#hand,#editor,#logl'))e.preventDefault()},{passive:false});
+document.addEventListener('wheel',e=>{if(e.ctrlKey)e.preventDefault()},{passive:false});
+document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&['+','-','=','0','c','v','x','s','p'].includes(e.key.toLowerCase()))e.preventDefault()});
+document.addEventListener('dblclick',e=>e.preventDefault());
+// orientamento obbligatorio in orizzontale: su Android lo blocca davvero (serve lo schermo intero),
+// sugli altri telefoni in verticale compare l'avviso "Ruota il telefono"
+function lockLandscape(){
+  if(!matchMedia('(pointer:coarse)').matches)return;
+  const lock=()=>screen.orientation?.lock?.('landscape').catch(()=>{});
+  const full=document.fullscreenElement||matchMedia('(display-mode: fullscreen)').matches||matchMedia('(display-mode: standalone)').matches;
+  if(full)lock();else document.documentElement.requestFullscreen?.({navigationUI:'hide'}).then(lock).catch(()=>{});
+}
+addEventListener('pointerdown',lockLandscape,{once:true});
+document.addEventListener('fullscreenchange',()=>{if(document.fullscreenElement)screen.orientation?.lock?.('landscape').catch(()=>{})});
+// installazione e funzionamento senza rete
+if('serviceWorker' in navigator&&/^https?:/.test(location.protocol))navigator.serviceWorker.register('sw.js').catch(()=>{});
+let installEv=null;
+addEventListener('beforeinstallprompt',e=>{e.preventDefault();installEv=e;$('install').style.display='block'});
+$('install').onclick=async()=>{if(!installEv)return;installEv.prompt();await installEv.userChoice;installEv=null;$('install').style.display='none'};
+addEventListener('appinstalled',()=>$('install').style.display='none');
+if(/iphone|ipad|ipod/i.test(navigator.userAgent)&&!navigator.standalone&&!matchMedia('(display-mode: standalone)').matches)$('ios-hint').style.display='block';
 $('mute').onclick=()=>{muted=!muted;$('mute').textContent=muted?'🔇':'🔊'};
 addEventListener('pointerdown',()=>ac()?.resume?.(),{once:true});
 resize();requestAnimationFrame(draw);
