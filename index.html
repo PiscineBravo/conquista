@@ -1200,7 +1200,8 @@ function facGrid(id,key){$(id).innerHTML=FKEYS.map(k=>{const F=FACTIONS[k];retur
 facGrid('h-fac','h');facGrid('j-fac','j');
 $('h-go').onclick=hostRoom;$('j-go').onclick=joinRoom;
 $('j-code').oninput=e=>e.target.value=e.target.value.toUpperCase().replace(/[^A-Z0-9]/g,'');
-$('l-copy').onclick=async()=>{const txt=`Giochiamo a Conquista! Apri il gioco, scegli "Entra" e usa il codice ${NET.code}`;
+$('l-copy').onclick=async()=>{const web=/^https?:/.test(location.protocol)?location.origin+location.pathname+'#'+NET.code:'';
+  const txt=web?`Giochiamo a Conquista! Entra nella mia stanza: ${web} (codice ${NET.code})`:`Giochiamo a Conquista! Apri il gioco, scegli "Entra" e usa il codice ${NET.code}`;
   try{await navigator.clipboard.writeText(txt);$('l-copy').textContent='✅ Copiato'}catch(e){prompt('Copia questo invito:',txt)}setTimeout(()=>$('l-copy').textContent='📋 Copia invito',1500)};
 if(/^#[A-Z0-9]{5}$/i.test(location.hash)){$('j-code').value=location.hash.slice(1).toUpperCase();showTab('join')}
 $('ed-open').onclick=openEditor;
